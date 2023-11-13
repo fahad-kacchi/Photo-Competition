@@ -1,0 +1,22 @@
+<html>
+    <head>
+        <style>
+            .photoCurve{
+				border-radius: 40px;
+			}
+        </style>
+    </head>
+    <body onload="showImage()">
+        <img src="" id="imageId" class="photoCurve" style="width:100%;height:100%;" alt="" />
+        
+        <script>
+            function showImage(){
+                var url = getURL();
+                var imagePath = url.split("=")[1];
+                var splitImagePath = imagePath.split("webapps")[1];
+                document.getElementById("imageId").src = splitImagePath;
+            }
+        </script>
+		<script type="text/javascript" src="scripts/get-url.js"></script>
+    </body>
+</html>

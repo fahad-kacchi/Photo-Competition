@@ -1,0 +1,122 @@
+<!--
+    Code Art Solutions
+    Project Name: Photo-Competition
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Photo Competition | Login</title>
+		<!-- Font Awesome -->
+		<link rel="stylesheet" href="MDB-Free/font/font-awesome.min.css">
+		<!-- Bootstrap core CSS -->
+		<link href="MDB-Free/css/bootstrap.min.css" rel="stylesheet">
+		<!-- Material Design Bootstrap -->
+		<link href="MDB-Free/css/mdb.min.css" rel="stylesheet">
+		<!-- Your custom styles (optional) -->
+		<link href="MDB-Free/css/style.css" rel="stylesheet">		
+		<style type="text/css">
+			html, body, header, .view {
+				height: 100%;
+			}
+			
+			@media (max-width: 740px) {
+				html, body, header, .view {
+					height: 1000px;
+				}
+			}
+			
+			@media (min-width: 800px) and (max-width: 850px) {
+				html, body, header, .view {
+					height: 650px;
+				}
+			}
+			
+			@media (min-width: 800px) and (max-width: 850px) {
+				.navbar:not(.top-nav-collapse) {
+					background: #1C2331!important;
+				}
+			}
+            .custom {border-radius: 30px;}
+            .bottom{
+                padding-bottom: 25px;
+            }
+            .buttonGradient{
+                background: linear-gradient(to bottom, #336699 0%, #336699 100%);   
+            }
+		</style>
+	</head>
+	
+    <body onload="showAdminNavBar('DASHBOARD'), updateTheme()">
+		<div id="nav-bar-id">
+        </div>
+		<br>
+        <div class="container" >
+            <div class="jumbotron">
+                <div class="card hoverable">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <img class="card-img-top hoverable" id="theme-photo-id" src="" alt="photo">
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card-body">
+                                <p> <b> <h3> Current Theme Details: </h3> </b> </p>
+                                <table class="table table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th colspan="3" id="theme-name-id"></th>
+                                        </tr>
+                                        <tr>
+                                            <th id="photo-count-id"></th>
+                                            <th id="start-date-id"></th>
+                                            <th id="end-date-id"></th>
+                                        </tr>
+                                    </thead>
+                                </table>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <form action="admin-add-theme.html">
+                                            <button class="btn btn-info my-4 btn-block custom buttonGradient" type="submit">Add new theme</button>
+                                        </form>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <form action="admin-check-competition-response.html">
+                                            <button class="btn btn-info my-4 btn-block custom buttonGradient" type="submit">Check response</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Custom Scripts -->
+		<script type="text/javascript" src="scripts/admin-nav-bar.js"></script>
+        <script>
+            function updateTheme(){
+                xmlhttp = new XMLHttpRequest();
+                xmlhttp.open("GET","/photo-competition/jsp-pages/update-theme-on-admin-dashboard.jsp",false);
+                xmlhttp.send();
+                output = xmlhttp.responseText;
+				if(!(output.trim() == "There is no current theme available")){
+					var split = output.trim().split("$");
+					var imagePath = split[1].split("photo-competition\\")[1];
+					document.getElementById("theme-name-id").innerHTML = "<center><b>Theme name: "+split[0]+"</b></center>";
+					document.getElementById("theme-photo-id").src = imagePath;
+					document.getElementById("start-date-id").innerHTML = "Start date: "+split[2];
+					document.getElementById("end-date-id").innerHTML = "End date: "+split[3];
+					document.getElementById("photo-count-id").innerHTML = "Photo count: "+split[4];
+				}
+            }
+        </script>
+        <!-- MDB - SCRIPTS -->
+		<script type="text/javascript" src="MDB-Free/js/jquery-3.3.1.min.js"></script>
+		<script type="text/javascript" src="MDB-Free/js/popper.min.js"></script>
+		<script type="text/javascript" src="MDB-Free/js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="MDB-Free/js/mdb.min.js"></script>
+	</body>
+</html>

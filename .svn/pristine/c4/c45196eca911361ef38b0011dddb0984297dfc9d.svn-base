@@ -1,0 +1,7 @@
+function goToLoginPage(){
+    window.location = "login-page.html";
+}
+
+function goToSignUpPage(){
+    window.location = "sign-up-page.html";
+}

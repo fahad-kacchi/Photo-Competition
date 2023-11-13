@@ -1,0 +1,82 @@
+<!--
+    Code Art Solutions
+    Project Name: Photo-Competition
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Photo Competition | Login</title>
+		<!-- <link rel="stylesheet" href="MDB-Free/extra-css/photo-grid.css"> -->
+		<!-- Font Awesome -->
+		<link rel="stylesheet" href="MDB-Free/font/font-awesome.min.css">
+		<!-- Bootstrap core CSS -->
+		<link href="MDB-Free/css/bootstrap.min.css" rel="stylesheet">
+		<!-- Material Design Bootstrap -->
+		<link href="MDB-Free/css/mdb.min.css" rel="stylesheet">
+		<!-- Your custom styles (optional) -->
+		<link href="MDB-Free/css/style.css" rel="stylesheet">		
+		<style type="text/css">
+			html, body, header, .view {
+				height: 100%;
+			}
+			
+			@media (max-width: 740px) {
+				html, body, header, .view {
+					height: 1000px;
+				}
+			}
+			
+			@media (min-width: 800px) and (max-width: 850px) {
+				html, body, header, .view {
+					height: 650px;
+				}
+			}
+			
+			@media (min-width: 800px) and (max-width: 850px) {
+				.navbar:not(.top-nav-collapse) {
+					background: #1C2331!important;
+				}
+			}
+            .custom {border-radius: 30px;}
+			.photoCurve{
+				border-radius: 20px;
+			}
+            .bottom{
+                padding-bottom: 25px;
+            }
+		</style>
+	</head>
+	
+    <body onload="showNavBar('PHOTO'), showPhotos()">
+        <div id="nav-bar-id">
+        </div>
+		
+		<br>
+        <div class="container" >
+            <h3 class="card-header" style="background-color:white;" align="center"><b>Photographs</b></h3><br>
+            <div class="row" id="show-photographs-id"> 
+            </div>
+        </div>
+        
+        <!-- Custom Scripts -->
+		<script type="text/javascript" src="scripts/nav-bar.js"></script>
+        <script>
+            function showPhotos(){
+                xmlhttp = new XMLHttpRequest();
+                xmlhttp.open("GET","/photo-competition/jsp-pages/show-photographs.jsp",false);
+                xmlhttp.send();
+                output = xmlhttp.responseText;
+                document.getElementById("show-photographs-id").innerHTML = output;
+            }
+        </script>
+        
+        <!-- MDB Scripts-->
+		<script type="text/javascript" src="MDB-Free/js/jquery-3.3.1.min.js"></script>
+		<script type="text/javascript" src="MDB-Free/js/popper.min.js"></script>
+		<script type="text/javascript" src="MDB-Free/js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="MDB-Free/js/mdb.min.js"></script>
+	</body>
+</html>

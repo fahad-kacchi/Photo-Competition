@@ -1,0 +1,143 @@
+<!--
+    Code Art Solutions
+    Project Name: Photo-Competition
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Photo Competition | Login</title>
+		<!-- Font Awesome -->
+		<link rel="stylesheet" href="MDB-Free/font/font-awesome.min.css">
+		<!-- Bootstrap core CSS -->
+		<link href="MDB-Free/css/bootstrap.min.css" rel="stylesheet">
+		<!-- Material Design Bootstrap -->
+		<link href="MDB-Free/css/mdb.min.css" rel="stylesheet">
+		<!-- Your custom styles (optional) -->
+		<link href="MDB-Free/css/style.css" rel="stylesheet">		
+		<style type="text/css">
+			html, body, header, .view {
+				height: 100%;
+			}
+			
+			@media (max-width: 740px) {
+				html, body, header, .view {
+					height: 1000px;
+				}
+			}
+			
+			@media (min-width: 800px) and (max-width: 850px) {
+				html, body, header, .view {
+					height: 650px;
+				}
+			}
+			
+			@media (min-width: 800px) and (max-width: 850px) {
+				.navbar:not(.top-nav-collapse) {
+					background: #1C2331!important;
+				}
+			}
+            .custom {border-radius: 30px;}
+            .bottom{
+                padding-bottom: 25px;
+            }
+            .heading6 {
+                color: white;
+                text-shadow: 1px 1px 2px black, 0 0 25px , 0 0 5px red;
+            }   ] 
+		</style>
+	</head>
+	
+	<body>
+        <nav class="navbar navbar-expand-lg navbar-dark navbar-dark purple">
+			<a class="navbar-brand" href="#">Navbar</a>
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#basicExampleNav" aria-controls="basicExampleNav"
+				aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="basicExampleNav">
+				<ul class="navbar-nav mr-auto">
+					<li class="nav-item">
+						<a class="nav-link" href="#">Home
+						<span class="sr-only">(current)</span>
+						</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="#">Themes</a>
+					</li>
+					<li class="nav-item active">
+						<a class="nav-link" href="#">Previous Winner</a>
+					</li>
+					<li class="nav-item dropdown">
+						<a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
+						<div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
+							<a class="dropdown-item" href="#">Action</a>
+							<a class="dropdown-item" href="#">Another action</a>
+							<a class="dropdown-item" href="#">Something else here</a>
+						</div>
+					</li>
+				</ul>
+				<form class="form-inline">
+					<div class="md-form my-0">
+						<input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+					</div>
+				</form>
+			</div>
+		</nav>
+        <br>
+        <div class="container">
+            <div class="jumbotron">
+                <div class="card hoverable custom" style=" background: linear-gradient(to right, #ee0979, #ff6a00); ">
+                    <div class="card-body">
+                        <h3 class="heading6" align="center"> <b> Congratulations </b> </h3>
+                    </div>
+                </div>
+                <br>
+
+                <div class="card hoverable">
+                    <div class="card-body">
+                        <h4 class="card-title" align="center"><a>{Winner Name}</a></h4>
+                        <hr>
+                        <h4 class="card-title" align="center"><a>{Prize : $250}</a></h4>
+                    </div>
+                    <div class="mask flex-center waves-effect waves-light">
+                        <img class="card-img-top hoverable " src="images/background/image-2.jpg" alt="photo">
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-bordered">
+                                <thead class="thead-dark">
+                                    <tr align="center">
+                                        <th>Shutter</th>
+                                        <th>Aperature</th>
+                                        <th>ISO</th>
+                                        <th>MP</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr align="center">
+                                        <td>1/2000</td>
+                                        <td>24</td>
+                                        <td>800</td>
+                                        <td>28</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="card-body">
+                        {Image Description}
+                    </div>
+                </div>
+
+            </div>
+        </div>
+		<script type="text/javascript" src="MDB-Free/js/jquery-3.3.1.min.js"></script>
+		<script type="text/javascript" src="MDB-Free/js/popper.min.js"></script>
+		<script type="text/javascript" src="MDB-Free/js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="MDB-Free/js/mdb.min.js"></script>
+	</body>
+</html>

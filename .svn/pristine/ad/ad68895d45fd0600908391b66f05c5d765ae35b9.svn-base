@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<meta http-equiv="x-ua-compatible" content="ie=edge">
+		<title>Photo Competition | Home</title>
+		<!-- Font Awesome -->
+		<link rel="stylesheet" href="MDB-Free/font/font-awesome.min.css">
+		<!-- Bootstrap core CSS -->
+		<link href="MDB-Free/css/bootstrap.min.css" rel="stylesheet">
+		<!-- Material Design Bootstrap -->
+		<link href="MDB-Free/css/mdb.min.css" rel="stylesheet">
+		<!-- Your custom styles (optional) -->
+		<link href="MDB-Free/css/style.css" rel="stylesheet">		
+		<style type="text/css">
+			html, body, header, .view {
+				height: 100%;
+			}
+			
+			@media (max-width: 740px) {
+				html, body, header, .view {
+					height: 1000px;
+				}
+			}
+			
+			@media (min-width: 800px) and (max-width: 850px) {
+				html, body, header, .view {
+					height: 650px;
+				}
+			}
+			
+			@media (min-width: 800px) and (max-width: 850px) {
+				.navbar:not(.top-nav-collapse) {
+					background: #1C2331!important;
+				}
+			}
+			.custom {border-radius: 30px;}
+		</style>
+	</head>
+	<body>
+		<div class="container-fluid view full-page-intro" style="background-image: url('images/background/background-image.jpg'); background-repeat: no-repeat; background-size: cover;">
+			<div class="mask rgba-black-light d-flex justify-content-center align-items-center">
+				<div class="container">
+					<div class="row wow fadeIn">
+						<div class="col-md-12 mb-4 white-text text-center text-md-left">
+							<center>
+								<div class="row">
+									<div class="col-md-3">
+									</div>
+									<div class="col-md-6">
+										<hr class="hr-light">
+									</div>
+								</div>
+								<h1 class="display-4 font-weight-bold">Photo Competition</h1>
+								<div class="row">
+									<div class="col-md-3">
+									</div>
+									<div class="col-md-6">
+										<hr class="hr-light">
+									</div>
+								</div>
+								<button type="submit" onclick="goToLoginPage()" class="btn custom" style="background:linear-gradient(to top left, #3333ff 0%, #00ffff 100%);">Login</button>
+								<button type="submit" onclick="goToSignUpPage()" class="btn custom" style="background:linear-gradient(to top left, #3333ff 0%, #00ffff 100%);">Sign Up</button>
+							</center>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- MDB - SCRIPTS -->
+		<script type="text/javascript" src="MDB-Free/js/jquery-3.3.1.min.js"></script>
+		<script type="text/javascript" src="MDB-Free/js/popper.min.js"></script>
+		<script type="text/javascript" src="MDB-Free/js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="MDB-Free/js/mdb.min.js"></script>
+
+		<!-- Initializations -->
+		<script type="text/javascript">
+			// Animations initialization
+			new WOW().init();
+		</script>
+        <script src="scripts/jump-page-scripts.js"></script>
+	</body>
+</html>

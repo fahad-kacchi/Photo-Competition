@@ -1,0 +1,90 @@
+<%@ page language="java" import="java.sql.*, java.io.*, java.util.*, java.time.*, com.oreilly.servlet.MultipartRequest"%>
+<%@include file="database-files/database-operations.jsp" %>
+
+<%
+    String fileName = request.getParameter("fileName");
+    String folderName = "admin-theme-photo";
+    try{
+        String path = System.getProperty("user.dir");
+        String uploadFolderPath = path + File.separator + "webapps" + File.separator + "photo-competition" + File.separator;
+        boolean isExists = isDirectoryExists(path, folderName, out);
+        if(!isExists){
+            createDirectory(uploadFolderPath, folderName, out);
+        }
+        MultipartRequest m = new MultipartRequest(request, uploadFolderPath + folderName);
+        changeFileName(fileName,  uploadFolderPath + folderName, out);
+        out.print("Photo uploaded successfully.");  
+    } catch(Exception e){
+        out.println(" Exception: " +e);
+    }
+%>
+
+<%!
+    public static boolean isDirectoryExists(String path, String folderName, JspWriter out) throws Exception{
+        boolean flag = false;
+        try{
+            File file = new File(path + folderName);
+            if(file.exists()){
+                flag = true;
+            }
+        } catch(Exception e){
+            out.println(" isDirectoryExists: " +e);
+        }
+        return flag;
+    }
+%>
+
+<%!
+    public static void changeFileName(String fileName, String path, JspWriter out) throws Exception{
+        try{
+            StringTokenizer splitString = new StringTokenizer(fileName, ".");
+            splitString.nextToken(); // Its filename not an extension thats why we traverse it.
+            String extension = splitString.nextToken();
+            LocalDate currentDate = LocalDate.now();
+            String newFileName = generateNewFileName() + "." + extension;
+            File originalFile = new File(path + File.separator + fileName);
+            File renameFile = new File(path + File.separator + newFileName);
+            originalFile.renameTo(renameFile);
+            storePhotoDetails(path + File.separator + newFileName, out);
+        } catch(Exception e){
+            out.println(" isDirectoryExists: " +e);
+        }
+    }
+%>
+
+<%!
+    public static void storePhotoDetails(String path, JspWriter out) throws Exception{
+        try{
+            String themeId = generatePrimaryKey("T", "theme", "theme_id", out);
+            con = fetchConnection();
+            stmt = con.createStatement();
+            String query = "insert into theme(theme_id, theme_photo) values('"+themeId+"', '"+path+"')";
+            stmt.executeUpdate(query);
+        } catch(Exception e){
+            out.println(" Store photo details exception: " +e);
+        } finally {
+            closeConnection();            
+        }
+    }
+%>
+
+<%!
+    public static void createDirectory(String path, String folderName, JspWriter out) throws Exception {
+        try{
+            new File(path + folderName).mkdir();
+        } catch(Exception e){
+            out.println(" createDirectory: " +e);
+        }
+    }
+%>
+
+
+<%!
+	public static String generateNewFileName(){
+		LocalDate currentDate = LocalDate.now();
+		LocalTime currentTime = LocalTime.now();
+		
+		return "THEME-" + currentDate.getYear() + "" + currentDate.getMonthValue() + "" + currentDate.getDayOfMonth() + "" +
+							currentTime.getHour() + "" + currentTime.getMinute() + "" + currentTime.getSecond();
+	}
+%>

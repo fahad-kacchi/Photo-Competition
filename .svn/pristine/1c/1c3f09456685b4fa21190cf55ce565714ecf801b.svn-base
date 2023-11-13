@@ -1,0 +1,130 @@
+<!--
+    Code Art Solutions
+    Project Name: Photo-Competition
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Photo Competition | Login</title>
+		<!-- Font Awesome -->
+		<link rel="stylesheet" href="MDB-Free/font/font-awesome.min.css">
+		<!-- Bootstrap core CSS -->
+		<link href="MDB-Free/css/bootstrap.min.css" rel="stylesheet">
+		<!-- Material Design Bootstrap -->
+		<link href="MDB-Free/css/mdb.min.css" rel="stylesheet">
+		<!-- Your custom styles (optional) -->
+		<link href="MDB-Free/css/style.css" rel="stylesheet">		
+		<style type="text/css">
+            .custom {border-radius: 30px;}
+            .bottom{
+                padding-bottom: 25px;
+            }
+		</style>
+	</head>
+
+    <body onload="showNavBar()">
+        <div id="nav-bar-id">
+        </div>
+        
+        <br>
+        <div class="container">
+            <div class="jumbotron">
+                <div class="card hoverable custom">
+                    <div class="card-body">
+                        <h3 align="center"> <b> Previous Themes </b> </h3>
+                    </div>
+                </div>
+                <br>
+                <a href="#" style="background: linear-gradient(to left, #6600ff 0%, #ff99cc 100%);" class="btn custom btn-block btn-primary">Click here to go back</a>
+                <br>
+                <div class="card hoverable">
+                    <div class="row">
+                        <div class="col-md-8 mask flex-center waves-effect waves-light">
+                            <img class="animated pulse card-img-top hoverable " src="images/background/image-1.jpg" alt="photo">
+                        </div>
+                        <div class="col-md-4">
+                            <div class="card-body">
+                                <h4 class="card-title"><a>{Winner Name}</a></h4>
+                                <p class="card-text">
+                                    {Theme-info}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <br>
+                <div class="row">
+                    <div class="col-md-4 view overlay zoom bottom">
+                        <img src="images/background/photo-card-1.jpg" class="img-fluid" data-toggle="modal" data-target="#exampleModalPopovers" alt="zoom">
+                    </div>
+                    <div class="col-md-4 view overlay zoom bottom">
+                        <img src="images/background/photo-card-2.jpg" class="img-fluid" alt="zoom">
+                    </div>
+                    <div class="col-md-4 view overlay zoom bottom">
+                        <img src="images/background/photo-card-3.jpg" class="img-fluid" alt="zoom">
+                    </div>
+                </div>
+              
+                <div class="row">
+                    <div class="col-md-4 view overlay zoom bottom">
+                        <img src="images/background/photo-card-1.jpg" class="img-fluid " alt="zoom">
+                    </div>
+                    <div class="col-md-4 view overlay zoom bottom">
+                        <img src="images/background/photo-card-2.jpg" class="img-fluid " alt="zoom">
+                    </div>
+                    <div class="col-md-4 view overlay zoom bottom">
+                        <img src="images/background/photo-card-3.jpg" class="img-fluid " alt="zoom">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal: Start -->
+        <div id="exampleModalPopovers" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalPopoversLabel">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalPopoversLabel">{Photographer Name}</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <img src="images/background/photo-card-3.jpg" class="img-fluid " alt="zoom">
+                    </div>
+                    <div class="modal-footer">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Shutter</th>
+                                    <th scope="col">Aperature</th>
+                                    <th scope="col">ISO</th>
+                                    <th scope="col">MP</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>1/2000</td>
+                                    <td>24</td>
+                                    <td>800</td>
+                                    <td>28</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>     
+        <!-- Modal: End -->
+        
+        <!-- MDBootstrap Scripts -->
+		<script type="text/javascript" src="MDB-Free/js/jquery-3.3.1.min.js"></script>
+		<script type="text/javascript" src="MDB-Free/js/popper.min.js"></script>
+		<script type="text/javascript" src="MDB-Free/js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="MDB-Free/js/mdb.min.js"></script>
+	</body>
+</html>

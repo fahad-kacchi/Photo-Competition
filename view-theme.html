@@ -1,0 +1,93 @@
+<!--
+    Code Art Solutions
+    Project Name: Photo-Competition
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Photo Competition | Login</title>
+		<!-- Font Awesome -->
+		<link rel="stylesheet" href="MDB-Free/font/font-awesome.min.css">
+		<!-- Bootstrap core CSS -->
+		<link href="MDB-Free/css/bootstrap.min.css" rel="stylesheet">
+		<!-- Material Design Bootstrap -->
+		<link href="MDB-Free/css/mdb.min.css" rel="stylesheet">
+		<!-- Your custom styles (optional) -->
+		<link href="MDB-Free/css/style.css" rel="stylesheet">		
+		<style type="text/css">
+            .custom {border-radius: 30px;}
+            .bottom{
+                padding-bottom: 25px;
+            }
+		</style>
+	</head>
+
+    <body onload="showPreviousThemeWinner(), viewPreviousThemeDetails(getURL())">
+        <div id="nav-bar-id">
+        </div>
+        
+        <br/>
+        <div class="container">
+            <div class="jumbotron">
+                <div class="card hoverable custom">
+                    <div class="card-body">
+                        <h3 align="center"> <b> Previous Themes </b> </h3>
+                    </div>
+                </div>
+                <br>
+                <!-- <a onclick="goToBackPage()" style="background: linear-gradient(to left, #6600ff 0%, #ff99cc 100%);" class="btn custom btn-block btn-primary">Click here to go back</a> -->
+                <br>
+                <div class="card hoverable" id="show-winner-div">
+                </div>
+
+                <br>
+				
+                <div class="row" id="show-previous-theme-photos-div">
+				</div>
+            </div>
+        </div>
+
+		<div id="show-previous-theme-details-div">
+		</div>
+        <!-- Modal: End -->
+        
+		<script>
+			function showPreviousThemeWinner(){
+				var themeId = getURL().split("=")[1];
+                xmlhttp = new XMLHttpRequest();
+                xmlhttp.open("GET","/photo-competition/jsp-pages/show-previous-theme-winner.jsp?themeId="+themeId,false);
+                xmlhttp.send();
+                output = xmlhttp.responseText;
+                document.getElementById("show-winner-div").innerHTML = output;
+				showPreviousThemePhotos(themeId);
+			}
+			
+			function showPreviousThemePhotos(themeId){
+                xmlhttp = new XMLHttpRequest();
+                xmlhttp.open("GET","/photo-competition/jsp-pages/show-previous-theme-photos.jsp?themeId="+themeId,false);
+                xmlhttp.send();
+                output = xmlhttp.responseText;
+                document.getElementById("show-previous-theme-photos-div").innerHTML = output;
+			}
+			
+			function viewPreviousThemeDetails(url){
+				var themeId = url.split("=")[1];
+                xmlhttp = new XMLHttpRequest();
+                xmlhttp.open("GET","/photo-competition/jsp-pages/view-previous-theme-details.jsp?themeId="+themeId,false);
+                xmlhttp.send();
+                output = xmlhttp.responseText;
+                document.getElementById("show-previous-theme-details-div").innerHTML = output+"";
+			}
+		</script>
+		<script type="text/javascript" src="scripts/get-url.js"></script>
+		
+        <!-- MDBootstrap Scripts -->
+		<script type="text/javascript" src="MDB-Free/js/jquery-3.3.1.min.js"></script>
+		<script type="text/javascript" src="MDB-Free/js/popper.min.js"></script>
+		<script type="text/javascript" src="MDB-Free/js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="MDB-Free/js/mdb.min.js"></script>
+	</body>
+</html>

@@ -1,0 +1,181 @@
+<!--
+    Code Art Solutions
+    Project Name: Photo-Competition
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Photo Competition | Login</title>
+		<!-- Font Awesome -->
+		<link rel="stylesheet" href="MDB-Free/font/font-awesome.min.css">
+		<!-- Bootstrap core CSS -->
+		<link href="MDB-Free/css/bootstrap.min.css" rel="stylesheet">
+		<!-- Material Design Bootstrap -->
+		<link href="MDB-Free/css/mdb.min.css" rel="stylesheet">
+		<!-- Your custom styles (optional) -->
+		<link href="MDB-Free/css/style.css" rel="stylesheet">		
+		<style type="text/css">
+			html, body, header, .view {
+				height: 100%;
+			}
+			
+			@media (max-width: 740px) {
+				html, body, header, .view {
+					height: 1000px;
+				}
+			}
+			
+			@media (min-width: 800px) and (max-width: 850px) {
+				html, body, header, .view {
+					height: 650px;
+				}
+			}
+			
+			@media (min-width: 800px) and (max-width: 850px) {
+				.navbar:not(.top-nav-collapse) {
+					background: #1C2331!important;
+				}
+			}
+            .custom {border-radius: 30px;}
+            .bottom{
+                padding-bottom: 25px;
+            }
+		
+			@media (min-width: 800px) and (max-width: 850px) {
+				.navbar:not(.top-nav-collapse) {
+					background: #1C2331!important;
+				}
+			}
+			
+		</style>
+	</head>
+	
+	<body>
+		<nav class="navbar fixed-top navbar-expand-lg navbar-dark scrolling-navbar">
+			<div class="container">
+				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+					aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+				</button>
+				<div class="collapse navbar-collapse" id="navbarSupportedContent">
+					<ul class="navbar-nav mr-auto">
+						<li class="nav-item active">
+							<a class="nav-link" href="welcome-page.html">Dashboard
+							<span class="sr-only">(current)</span>
+							</a>
+						</li>
+                        <li class="nav-item">
+                            <a class="nav-link" onclick="photoGraphButtonURL()">Photographs</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" onclick="themeButtonURL()">Themes</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" onclick="aboutUsButtonURL()">About Us</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" onclick="contactUsButtonURL()">Contact Us</a>
+                        </li>
+					</ul>
+                    <span class="white-text">
+                        <ul class="navbar-nav mr-auto">
+                            <li class="nav-item">
+                                <a class="nav-link" onclick="logoutButtonURL()">Logout</a>
+                            </li>
+                        </ul>
+                    </span>
+				</div>
+			</div>
+		</nav>
+		<div class="view" style="background-image: url('images/backgrounds/image-3.jpg'); background-repeat: no-repeat; background-size: cover;">
+            <div class="mask flex-center waves-effect waves-light rgba-teal-super-light">
+            </div>
+        </div>
+        <br>
+        <div class="container">
+            <div class="card default-color text-center z-depth-2">
+                <div class="card-body">
+                    <p class="white-text mb-0">
+                        Photographers of all ages, backgrounds and experience levels are invited to enter their best single images into the Open competition for a chance to win $5,000 (USD), Sony Digital Imaging Equipment, a trip to London, and be crowned "Open Photographer of the Year".
+                        The judges are looking to award the best single images from across the following 10 diverse categories: Architecture, Culture, Creative, Motion, Landscape, Natural World & Wildlife, Portraiture, Still Life, Street Photography, and Travel.
+                    </p>
+                </div>
+            </div>
+        </div>
+        <br>
+        <div class="container">
+            <button type="button" class="btn btn-block btn-outline-success waves-effect" onclick="submitYourEntry(getURL())">Click here to submit your entry</button>
+        </div>
+        <br>
+		<footer class="page-footer font-small special-color lighten-3 pt-4">
+			<div class="container-fluid text-center text-md-left">
+				<div class="row">
+					<hr class="clearfix w-100 d-md-none pb-3">
+					<div class="col-md-12 mb-md-0 mb-3">
+						<p>Our community is a collective of dedicated visual storytellers and photography enthusiasts. We welcome Sony Alpha Camera owners to explore, discover, learn and share the art of visual storytelling with us. Register and be a part of our Expert Workshops and Monthly Photo Contests and get a chance to win exciting prizes. Registration is applicable for the below products.</p>
+					</div>
+				</div>
+			</div>
+		</footer>
+        
+        <!-- Custom Scripts -->
+		<script type="text/javascript" src="scripts/navbar-buttons-operation.js"></script>
+		<script type="text/javascript" src="scripts/get-url.js"></script>
+        <script>
+            function isAlreadySubmitted(){
+                xmlhttp = new XMLHttpRequest();
+                xmlhttp.open("GET","/photo-competition/jsp-pages/check-if-photograph-already-submitted.jsp?loginId="+getLoginId(),false);
+                xmlhttp.send();
+                output = xmlhttp.responseText;
+                if(parseInt(output.trim()) == 0){
+                    return false;
+                } else {
+                    return true;
+                }
+            }
+            function submitYourEntry(url){
+                if(isAlreadySubmitted()){
+                    alert(" Photo already submitted. You cannot submit another photograph.");
+                } else {
+                    var loginId = url.split("=")[1];
+                    window.location = "competition-registration-page.html?loginId="+loginId;
+                }
+            }
+            
+            function photoGraphButtonURL(){   
+                window.location = "photographs.html?loginId="+getLoginId();
+            }
+
+            function themeButtonURL(){
+                window.location = "theme-home-page.html?loginId="+getLoginId();
+            }
+
+            function dashboardButtonURL(){
+                window.location = "welcome-page.html?loginId="+getLoginId();
+            }
+
+            function aboutUsButtonURL(){
+                window.location = "about-us.html?loginId="+getLoginId();
+            }
+
+            function contactUsButtonURL(){
+                window.location = "contact-us.html?loginId="+getLoginId();
+            }
+
+            function logoutButtonURL(){
+                window.location = "jsp-pages/logout.jsp?loginId="+getLoginId();
+            }
+            function getLoginId(){
+                return getURL().split("=")[1]; 
+            }
+        </script>
+        <!-- MDB scripts -->
+		<script type="text/javascript" src="MDB-Free/js/jquery-3.3.1.min.js"></script>
+		<script type="text/javascript" src="MDB-Free/js/popper.min.js"></script>
+		<script type="text/javascript" src="MDB-Free/js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="MDB-Free/js/mdb.min.js"></script>
+	</body>
+</html>

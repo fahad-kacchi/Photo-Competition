@@ -1,0 +1,51 @@
+<%@ page language="java" import="java.sql.*, java.io.*, java.util.*, java.time.*"%>
+<%@include file="database-files/database-operations.jsp" %>
+<%@include file="utils/string-operations.jsp" %>
+
+<%
+    try{
+        List<String> photoDetails = getPhotoDetails(out);
+        if(photoDetails == null){
+            out.println(" No records found!");
+            return;
+        }
+        for(String photoPath : photoDetails){
+            String split = photoPath.split("photo-competition")[1];
+            StringBuilder sb = new StringBuilder(split);
+            sb.deleteCharAt(0);
+            String imageSource = sb.toString();
+            String showPhoto = ""+
+                "<div class=\"col-md-4 bottom\">"+
+                    "<img src="+imageSource+" class=\"photoCurve\" style=\"width:100%\"></img>"+
+                "</div>";
+            out.println(showPhoto);
+        }
+    } catch(Exception e){
+        out.println(" Show photographs exception: " +e);
+    }
+%>
+
+<%!
+    public static List<String> getPhotoDetails(JspWriter out) throws Exception{
+        List<String> photoDetails = new ArrayList<String>();
+        try {
+            con = fetchConnection();
+            stmt = con.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
+            String query = "select photo from photo_register";
+            rs = stmt.executeQuery(query);
+            if(!rs.next()){
+                photoDetails = null;
+            } else {
+                rs.beforeFirst();
+                while(rs.next()){
+                    photoDetails.add(rs.getString("photo"));
+                }
+            }
+        } catch(Exception e) {
+            out.println(" Get photo details exception: " +e);
+        } finally {
+            closeConnection();
+        }
+        return photoDetails;
+    }
+%>

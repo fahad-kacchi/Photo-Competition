@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+        <link rel="stylesheet" href="bootstrap/w3.css/w3.css">
+        <script src="bootstrap/jquery/jquery-3.3.1.js"> </script>
+        <script src="bootstrap/js/bootstrap.min.js"></script>
+    </head>
+    
+    <body>
+        <div class="container">
+            <h2>Rounded Corners</h2>
+            <p>The .img-rounded class adds rounded corners to an image (not available in IE8):</p>            
+            <img src="images/background/IMG-20170709-WA0015.jpg" class="img-rounded" alt="Cinque Terre" width="304" height="236">
+        </div>
+
+    <div class="container">
+      <h2>Contextual Classes</h2>
+      <p>Contextual classes can be used to color table rows or table cells. The classes that can be used are: .active, .success, .info, .warning, and .danger.</p>
+        <div class="table-responsive">
+              <table class="table table-hover">
+                <thead>
+                  <tr>
+                    <th>Firstname</th>
+                    <th>Lastname</th>
+                    <th>Email</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Default</td>
+                    <td>Defaultson</td>
+                    <td>def@somemail.com</td>
+                  </tr>      
+                  <tr class="success">
+                    <td>Success</td>
+                    <td>Doe</td>
+                    <td>john@example.com</td>
+                  </tr>
+                  <tr class="danger">
+                    <td>Danger</td>
+                    <td>Moe</td>
+                    <td>mary@example.com</td>
+                  </tr>
+                  <tr class="info">
+                    <td>Info</td>
+                    <td>Dooley</td>
+                    <td>july@example.com</td>
+                  </tr>
+                  <tr class="warning">
+                    <td>Warning</td>
+                    <td>Refs</td>
+                    <td>bo@example.com</td>
+                  </tr>
+                  <tr class="active">
+                    <td>Active</td>
+                    <td>Activeson</td>
+                    <td>act@example.com</td>
+                  </tr>
+                </tbody>
+              </table>
+          </div>
+    </div>
+        
+    </body>
+</html>

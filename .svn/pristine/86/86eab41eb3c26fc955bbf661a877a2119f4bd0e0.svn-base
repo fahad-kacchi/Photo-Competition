@@ -1,0 +1,63 @@
+<%@ page language="java" import="java.sql.*, java.io.*, java.util.*, java.time.*"%>
+<%@include file="database-files/database-operations.jsp" %>
+<%@include file="utils/string-operations.jsp" %>
+
+<%
+    try{
+        List<List<String>> photoDetails = getPhotoDetails(out);
+        if(photoDetails == null){
+            out.println(" No records found!");
+            return;
+        }
+        /*for(List<String> list : photoDetails){
+            out.println(list.get(0) + " " + list.get(1));
+        }*/
+        
+        for(List<String> list : photoDetails){
+            String split = list.get(0).split("photo-competition")[1];
+            StringBuilder sb = new StringBuilder(split);
+            sb.deleteCharAt(0);
+            String imageSource = sb.toString();
+            String showPhoto = "";
+            showPhoto = ""+
+                "<div class=\"col-md-4\">"+
+                    "<img src="+imageSource+" style=\"width:100%\"></img>"+
+                        "<div class=\"custom-control custom-checkbox\">"+
+                            "<input type=\"checkbox\" class=\"custom-control-input\" onclick=\"myFunction(this)\" id=\"defaultUnchecked\">"+
+                            "<label class=\"custom-control-label\" for=\"defaultUnchecked\">Like</label>"+
+                        "</div>"+
+                "</div>";
+            out.println(showPhoto);
+        }
+    } catch(Exception e){
+        out.println(" Show photographs exception: " +e);
+    }
+%>
+
+<%!
+    public static List<List<String>> getPhotoDetails(JspWriter out) throws Exception{
+        List<List<String>> photoDetails = new ArrayList<List<String>>();
+        try {
+            con = fetchConnection();
+            stmt = con.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
+            String query = "select * from photo_register where theme_id = (select theme_id from theme where current_theme_flag = 1)";
+            rs = stmt.executeQuery(query);
+            if(!rs.next()){
+                photoDetails = null;
+            } else {
+                rs.beforeFirst();
+                while(rs.next()){
+                    List<String> record = new ArrayList<String>();
+                    record.add(rs.getString("photo"));
+                    record.add(rs.getString("like_status_of_current_user"));
+                    photoDetails.add(record);
+                }
+            }
+        } catch(Exception e) {
+            out.println(" Get photo details exception: " +e);
+        } finally {
+            closeConnection();
+        }
+        return photoDetails;
+    }
+%>

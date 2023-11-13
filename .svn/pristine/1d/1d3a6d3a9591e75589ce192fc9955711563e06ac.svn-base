@@ -1,0 +1,41 @@
+create database photo_competition;
+\c photo_competition
+
+create table login(
+login_id varchar(10) primary key,
+full_name varchar(100),
+email varchar(40),
+password varchar(20),
+phone_no varchar(10),
+login_flag int
+);
+
+create table theme(
+theme_id varchar(10) primary key,
+name varchar(50),
+theme_description varchar(300),
+theme_photo varchar(200),
+start_date date,
+to_date date,
+current_theme_flag int
+);
+
+create table photo_register(
+photo_id varchar(10),
+photo_description varchar(500),
+photo varchar(200),
+shutter varchar(10),
+aparture varchar(10),
+iso varchar(10),
+mega_pixel varchar(10),
+like_count int,
+like_status_of_current_user int,
+theme_id varchar(10) references theme on delete cascade on update cascade,
+login_id varchar(10) references login on delete cascade on update cascade
+);
+
+create table winner(
+winner_id varchar(10) primary key,
+login_id varchar(10) references login on delete cascade on update cascade,
+theme_id varchar(10) references theme on delete cascade on update cascade
+);
